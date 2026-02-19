@@ -1,0 +1,55 @@
+Project Overview
+This project demonstrates a complete CI/CD pipeline for a Node.js application using Jenkins and Docker deployed on AWS EC2
+The pipeline automatically builds and deploys the application whenever code is pushed to GitHub.
+
+Architecture
+
+The application follows the below architecture:
+
+Developer pushes code to GitHub
+
+Jenkins automatically triggers pipeline
+
+Docker image is built
+
+Old container is stopped
+
+New container is deployed
+
+Application is accessible via EC2 public IP
+
+🛠 Technologies Used
+
+Node.js
+
+Docker
+
+Jenkins
+
+Git & GitHub
+
+AWS EC2 (Ubuntu)
+
+🔄 CI/CD Pipeline Flow
+Stage 1 – Code Checkout
+
+Jenkins pulls latest code from GitHub repository.
+
+Stage 2 – Docker Build
+
+Docker image is built using Dockerfile.
+
+docker build -t ci-cd-demo .
+
+Stage 3 – Stop Old Container
+docker stop ci-container || true
+docker rm ci-container || true
+
+Stage 4 – Deploy New Container
+docker run -d -p 8081:3000 --name ci-container ci-cd-demo
+
+🌍 Application Access
+
+Application is accessible at:
+
+http://<EC2-PUBLIC-IP>:8081
