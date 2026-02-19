@@ -52,7 +52,6 @@ Then builds a Docker image using the `Dockerfile`.
 
 Docker builds the image:
 
-```bash
 docker build -t rahulgaware/ci-cd-devops-demo .
 
 Jenkins uses this image to run the app.
