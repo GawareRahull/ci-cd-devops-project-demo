@@ -1,0 +1,6 @@
+Login to AWS console with your credential
+Click on Launch Instance > select Ubuntu 22.04 OS > Instance type 't3.micro' > Volume = 20 gb
+Click on launch
+Update Security group > open port 22,3000,8080,8081
+Login to Instance using putty or any linux terminal
+This way AWS EC2 succesfully launched & login
