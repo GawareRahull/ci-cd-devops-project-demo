@@ -10,7 +10,7 @@ Any change pushed to this GitHub repository triggers the Jenkins pipeline, which
 
 ## Architecture Diagram
 
-![CI/CD Architecture](architecture-diagram.png)
+![CI/CD Architecture](https://raw.githubusercontent.com/GawareRahull/ci-cd-devops-project-demo/main/architecture-diagram.png)
 
 The above diagram shows how code flows from the developer to production:
 1. Developer pushes code to GitHub.
