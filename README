@@ -4,7 +4,9 @@ The pipeline automatically builds and deploys the application whenever code is p
 
 Architecture
 
+## Architecture Diagram
 
+![CI/CD Architecture](architecture-diagram.png)
 
 The application follows the below architecture:
 
