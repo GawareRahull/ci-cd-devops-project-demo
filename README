@@ -1,59 +1,91 @@
-Project Overview
-This project demonstrates a complete CI/CD pipeline for a Node.js application using Jenkins and Docker deployed on AWS EC2
-The pipeline automatically builds and deploys the application whenever code is pushed to GitHub.
+# 🚀 CI/CD DevOps Project Demo
 
-Architecture
+## 📌 Project Overview
 
-## Architecture Diagram
+This repository contains a complete **CI/CD pipeline** implementation for a **Node.js application** using **Jenkins**, **Docker**, and deployed on **AWS EC2**.
 
-![CI/CD Architecture](architecture-diagram.png)
+Any change pushed to this GitHub repository triggers the Jenkins pipeline, which builds a Docker image, pushes it to DockerHub, and deploys the application container on AWS EC2.
 
-The application follows the below architecture:
+---
 
-Developer pushes code to GitHub
+## 🏗 Architecture Diagram
 
-Jenkins automatically triggers pipeline
+<p align="center">
+  <img src="architecture-diagram.png" width="800" alt="CI/CD Architecture Diagram">
+</p>
 
-Docker image is built
+The above diagram shows how code flows from the developer to production:
+1. Developer pushes code to GitHub.
+2. GitHub triggers the Jenkins job.
+3. Jenkins builds and pushes a Docker image.
+4. Jenkins deploys the container on the EC2 instance.
+5. Application is served to users via public IP and port.
 
-Old container is stopped
+---
 
-New container is deployed
+## 🛠 Technologies Used
 
-Application is accessible via EC2 public IP
+| Layer | Technology |
+|-------|------------|
+| Source Control | GitHub |
+| CI/CD Tool | Jenkins |
+| Containerization | Docker |
+| Hosting | AWS EC2 (Ubuntu) |
+| Application | Node.js |
 
-🛠 Technologies Used
+---
 
-Node.js
+## 🔄 CI/CD Pipeline Flow
 
-Docker
+### 1️⃣ Code Versioning
 
-Jenkins
+- The Node.js application code is stored in GitHub.
+- Jenkins monitors the `main` branch for changes.
 
-Git & GitHub
+### 2️⃣ Checkout and Build
 
-AWS EC2 (Ubuntu)
+Jenkins pulls the latest code:
 
-🔄 CI/CD Pipeline Flow
-Stage 1 – Code Checkout
+Then builds a Docker image using the `Dockerfile`.
 
-Jenkins pulls latest code from GitHub repository.
+---
 
-Stage 2 – Docker Build
+### 3️⃣ Docker Image Build
 
-Docker image is built using Dockerfile.
+Docker builds the image:
 
-docker build -t ci-cd-demo .
+```bash
+docker build -t rahulgaware/ci-cd-devops-demo .
 
-Stage 3 – Stop Old Container
-docker stop ci-container || true
-docker rm ci-container || true
+Jenkins uses this image to run the app.
 
-Stage 4 – Deploy New Container
-docker run -d -p 8081:3000 --name ci-container ci-cd-demo
+4️⃣ Docker Login
 
-🌍 Application Access
+Jenkins logs in to DockerHub using stored credentials.
 
-Application is accessible at:
+5️⃣ Docker Push
 
-http://<EC2-PUBLIC-IP>:8081
+The built image is pushed to DockerHub.
+
+6️⃣ Deployment
+
+Before deploying new container, Jenkins:
+
+Stops old container (if running).
+
+Removes old container.
+
+Then runs the new container:
+
+docker run -d -p 8081:3000 --name ci-container rahulgaware/ci-cd-devops-demo
+
+
+The application is now accessible at:
+
+http://<EC2_PUBLIC_IP>:8081
+
+📌 How to Access the Application
+
+After successful deployment, open in browser:
+
+http://<EC2-IP>:8081
