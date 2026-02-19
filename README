@@ -6,7 +6,7 @@ Architecture
 
 ## Architecture Diagram
 
-![CI/CD Architecture](architecture-diagram.png)
+![CI/CD Architecture](https://github.com/GawareRahull/ci-cd-devops-project-demo/blob/main/Copy%20of%20ci-cd-devops-architecture.drawio.png)
 
 The application follows the below architecture:
 
