@@ -8,8 +8,6 @@ Any change pushed to this GitHub repository triggers the Jenkins pipeline, which
 
 ---
 
-## 🏗 Architecture Diagram
-
 ## Architecture Diagram
 
 ![CI/CD Architecture](architecture-diagram.png)
