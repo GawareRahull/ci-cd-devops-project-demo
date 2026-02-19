@@ -1,0 +1,12 @@
+Go to Jenkins > Manage Jenkins > Credentials > Add
+
+Choose:
+
+Kind: Username with password
+
+Username: your DockerHub username
+
+Password: your DockerHub password
+
+ID: dockerhub-creds
+
