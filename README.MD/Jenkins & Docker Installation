@@ -1,0 +1,69 @@
+#### Jenkins Installation
+> Login to EC2 terminal 
+> Update the OS
+$ sudo apt update
+> Install Java 
+$ sudo apt install openjdk-17-jdk -y
+> Verify
+$ jave -version
+> Install jenkins > go to official jenkins website https://www.jenkins.io/doc/book/installing/
+> select Linux > Debian/ubuntu
+> First copy & paste below command in terminal to add jenkins keyrings
+$ sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
+> Then copy below command to add binary of jenkins
+$ echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+> Now update the OS & install Jenkins Using below command
+$ sudo apt update
+$ sudo apt install jenkins -y
+> check the status of jenkins
+$ sudo systemctl status jenkins
+> Pess 'q' to exit screen
+> If it is not active then activate jenkins using below command
+$ sudo systemctl start jenkins
+$ sudo systemctl enable jenkins
+> go to browser type http://<ec2-pulic-ip>:8080 & hit the enter
+> go back to terminal & type below command
+$ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+> copy the code and & enter to the jenkins UI password
+> click on Install suggested Plugins
+> Create First Admin User or Skip the step [If you want to use this Jenkins instance for future use-cases as well, better to create admin user]
+> Jenkins is ready now 
+########## Jenkins Installation is Succesfull
+
+######## Docker installation steps
+> Go to terminal & type below command 
+$ sudo apt install docker.io -y
+> check the docker status 
+$ systemctl status docker
+> It should show active, if not then type below command to activate
+$ systemctl start docker
+$ systemctl enable docker
+> verify the docker 
+$ docker --version
+> test the docker 
+$ sudo docker run hello-word
+> If it prints Success message then docker works
+
+
+########## Allow Jenkins to use Docker
+> Add jenkins user to docker group
+$ sudo usermod -aG docker jenkins
+
+> Now restart both services (jenkins & docker)
+$ sudo systemctl restart docker
+$ sudo systemctl restart jenkins 
+
+######### Verify Jenkins user can access Docker
+> Switch jenkins user & type any docker command
+$ sudo su - jenkins
+$ sudo docker ps
+
+>If it shows no permission error → perfect.
+> If permission denied appears:
+> Run this and reboot:
+$ sudo reboot
+
+######### Successfully Configured Jenkins & Docker
