@@ -4,6 +4,8 @@ The pipeline automatically builds and deploys the application whenever code is p
 
 Architecture
 
+
+
 The application follows the below architecture:
 
 Developer pushes code to GitHub
