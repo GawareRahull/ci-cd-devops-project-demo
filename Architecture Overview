@@ -1,0 +1,26 @@
+Developer
+   │
+   │ git push
+   ▼
+GitHub Repository
+   │
+   │ Webhook Trigger
+   ▼
+Jenkins Server (EC2)
+   │
+   ├── Stage 1: Checkout Code
+   ├── Stage 2: Build Docker Image
+   ├── Stage 3: Stop Old Container
+   ├── Stage 4: Run New Container
+   │
+   ▼
+Docker Engine (Same EC2)
+   │
+   ▼
+Node.js Application Container
+   │
+   ▼
+Port 8081 Exposed
+   │
+   ▼
+User Browser → http:<//EC2-IP>:8081
